@@ -33,7 +33,7 @@ static Scaffold getContent(BuildContext context, content, [bool showbottom = tru
   return Scaffold(
     appBar: AppBar(
       backgroundColor: primary(),
-      title: Text('ThizerList'),
+      title: Text('FloreSer'),
 
     ),
     bottomNavigationBar: showbottom ? bottomNavBar : null,

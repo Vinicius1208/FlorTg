@@ -20,7 +20,7 @@ class _FormPageState extends State<FormaPage> {
     return MaterialApp(
       home: new Scaffold(
         appBar: new AppBar(
-          title: new Text('Formulário com Validação'),
+          title: new Text('FloeSer'),
         ),
         body: new SingleChildScrollView(
           child: new Container(
@@ -38,6 +38,8 @@ class _FormPageState extends State<FormaPage> {
 
   Widget _formUI() {
     return new Column(
+
+      mainAxisAlignment: MainAxisAlignment.center,
 
       children: <Widget>[
         new TextFormField(
@@ -58,19 +60,24 @@ class _FormPageState extends State<FormaPage> {
             }),
 
         new SizedBox(height: 15.0),
-        new RaisedButton(
-          onPressed: _sendForm,
-          child: new Text('Enviar'),
+
+        Row(
+          children: <Widget>[
+            new RaisedButton(
+              onPressed: _sendForm,
+              child: new Text('Enviar'),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
+              },
+              child: Text('Home'),
+            )
+          ],
         ),
-        RaisedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HomePage()),
-            );
-          },
-          child: Text('Home'),
-        )
       ],
     );
   }
@@ -111,6 +118,7 @@ class _FormPageState extends State<FormaPage> {
       // erro de validação
       setState(() {
         _validate = true;
+
       });
     }
   }

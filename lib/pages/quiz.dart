@@ -20,7 +20,6 @@ class _QuizPageState extends State<QuizPage>{
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
 
@@ -66,6 +65,7 @@ class _QuizPageState extends State<QuizPage>{
             ],
           ),
           Row(
+
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               RaisedButton(

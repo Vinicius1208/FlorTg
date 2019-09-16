@@ -21,35 +21,44 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
 
     final content = Center(
+
+
       child: Column(
         children: <Widget>[
-          RaisedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => QuizPage()),
-              );
-            },
-            child: Text('Quiz'),
+          Text("Aplicativo voltado a pais e professores que possuam interesse em obter conhecimento sobre autismo",style: TextStyle(fontSize: 22),),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              RaisedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => QuizPage()),
+                  );
+                },
+                child: Text('Quiz'),
+              ),
+              RaisedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FormaPage()),
+                  );
+                },
+                child: Text('Iniciar Quiz'),
+              ),
+              RaisedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => EndPage()),
+                  );
+                },
+                child: Text('Resultado'),
+              )
+            ],
           ),
-          RaisedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => FormaPage()),
-              );
-            },
-            child: Text('Formulario'),
-          ),
-          RaisedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => EndPage()),
-              );
-            },
-            child: Text('Resultado'),
-          )
+
         ],
       ),
     );
