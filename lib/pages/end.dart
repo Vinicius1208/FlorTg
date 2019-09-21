@@ -1,4 +1,9 @@
+import 'dart:async';
+
+import 'package:flor_e_ser_app/pages/quizModel.dart';
 import 'package:flutter/material.dart';
+import 'package:flor_e_ser_app/pages/quiz.dart';
+import 'package:flor_e_ser_app/pages/quiz-bloc.dart';
 
 
 class EndPage extends StatefulWidget{
@@ -9,6 +14,20 @@ class EndPage extends StatefulWidget{
 
 }
 class _EndPageState extends State<EndPage>{
+
+//  QuizBloc bloc;
+//
+//  @override
+//  void initState(){
+//    super.initState();
+//    bloc = QuizBloc();
+//  }
+//
+//  @override
+//  void dispose(){
+//    bloc.dispose();
+//    super.dispose();
+//  }
 
   bool isSelected = false;
   @override
@@ -21,7 +40,13 @@ class _EndPageState extends State<EndPage>{
           Text("Se a criança apresentou qualquer similiradidade apresentada nas"
               " perguntas sugerimos a procura de um profissional"
               " Neurologista, mas a pontuação de alternativas foram:",style: TextStyle(fontSize: 22),),
-          Text("Pontuação:",style: TextStyle(fontSize: 22),),
+
+//          StreamBuilder<QuizModel>(
+//            stream: bloc.outBloc,
+//              builder: (BuildContext context, AsyncSnapshot<QuizModel> snapshot){
+//                return snapshot.hasData? Text(snapshot.data.text) : Text ("Carregando");
+//              }
+//          ),
           Text("Temos disponivel dicas e sugestões que serão exibidas diariamente, "
               "mas para isso é necessario que aceite esta opção:",style: TextStyle(fontSize: 22),),
 
@@ -47,7 +72,7 @@ class _EndPageState extends State<EndPage>{
 
             ],
           )
-          
+
 
         ],
       ),

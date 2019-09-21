@@ -14,7 +14,7 @@ description: Tg
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -26,6 +26,8 @@ dependencies:
   font_awesome_flutter: any
   url_launcher: any
   flutter_masked_text: ^0.8.0
+  rxdart: any
+  bloc_pattern: any
 
 dev_dependencies:
   flutter_test:

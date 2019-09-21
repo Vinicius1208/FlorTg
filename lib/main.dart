@@ -1,3 +1,5 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:flor_e_ser_app/pages/quiz-bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flor_e_ser_app/pages/home.dart';
 import 'package:flor_e_ser_app/pages/about.dart';
@@ -19,7 +21,8 @@ class Floreser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return BlocProvider(
+      child: MaterialApp(
         title: 'FloeSer',
         theme: ThemeData(
             primaryColor: Layout.primary(),
@@ -29,9 +32,18 @@ class Floreser extends StatelessWidget {
                 title: TextStyle(fontSize: 24, fontStyle: FontStyle.italic, color: Layout.primary()),
                 body1: TextStyle(fontSize: 14)
             )
+
         ),
         home: HomePage(),
-        routes: routes
+          routes: routes
+      ),
+
+        blocs: [
+          Bloc((i)=> QuizBloc()),
+        ],
+
+
+
     );
   }
 

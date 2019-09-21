@@ -1,27 +1,46 @@
+import 'dart:async';
+
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flor_e_ser_app/pages/home.dart';
+import 'package:flor_e_ser_app/pages/quiz-bloc.dart';
+import 'package:flor_e_ser_app/pages/quizModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flor_e_ser_app/layout.dart';
+import 'package:rxdart/rxdart.dart';
 
 class QuizPage extends StatefulWidget{
   @override
   _QuizPageState createState() => _QuizPageState();
 
 
-
 }
 
 class _QuizPageState extends State<QuizPage>{
 
-  int selectedRadio;
-  setSelectedRadio(int value){
-    setState(() {
-      selectedRadio = value;
+  final QuizBloc bloc = BlocProvider.getBloc<QuizBloc>();
 
+  int selectedRadio;
+   setSelectedRadio(int value){
+    setState(() {
+      selectedRadio = value ;
     });
   }
 
+
+
+//   int somas = 0;
+//  void somarAlternativas(){
+//    setState(() {
+//      somas++;
+//    });
+//  }
+
+
+
   @override
   Widget build(BuildContext context) {
+
+
 
     return Scaffold(
       appBar: AppBar(
@@ -43,23 +62,37 @@ class _QuizPageState extends State<QuizPage>{
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Radio(
-                  value: 1,
+                  value: bloc.outCount,
+//                  StreamBuilder(
+//                    stream: bloc.outCount,
+//
+//                    builder: (BuildContext context, AsyncSnapshot snapshot){
+//                      return Text("aquiii $snapshot.data");
+//                    },
+//
+//                  ),
                   groupValue: selectedRadio,
                   activeColor: Layout.success(),
                   onChanged: (value){
-                        print("Radio $value");
-                        setSelectedRadio(value);
-                  },
+                    print("Radio1 $value");
+                    setState(() {
+                      setSelectedRadio(value);
+                    });
+                  }
               ),
               Text('Sim ' ),
+
+
               Radio(
-                  value: 2,
+                value: 2,
                 activeColor: Layout.success(),
                 groupValue: selectedRadio,
                 onChanged: (value){
-                  print("Radio $value");
-                  setSelectedRadio(value);
-                },
+                  setState(() {
+                    print("Radio2 $value");
+                    setSelectedRadio(value);
+                  });
+                }
               ),
               Text('Não'),
             ],
@@ -76,16 +109,21 @@ class _QuizPageState extends State<QuizPage>{
                     MaterialPageRoute(builder: (context) => HomePage()),
                   );
                 },
+
               ),
               RaisedButton(
                 child: Text('proximo'),
-                onPressed: () {
+                onPressed:
+                    ()
+                {
+                  bloc.increment();
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Rota2()),
                   );
                 },
-              ),
+             ),
             ],
           ),
         ],
@@ -97,8 +135,10 @@ class _QuizPageState extends State<QuizPage>{
 }
 
 class Rota2 extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Questao 2"),
@@ -117,8 +157,20 @@ class Rota2 extends StatelessWidget {
           ),
           Row(
             children: <Widget>[
-              Radio(value: null, groupValue: null, onChanged: null),
-              Radio(value: null, groupValue: null, onChanged: null),
+//              Radio(
+//                  value: somas,
+//                  groupValue: selectedRadio,
+//                  activeColor: Layout.success(),
+//                  onChanged: (value){
+//                    print("Radio1 $value");
+//                    setState(() {
+//                      setSelectedRadio(value);
+//                    });
+//                  }
+//              ),
+              Radio(value: null,
+                  groupValue: null,
+                  onChanged: null),
             ],
           ),
           Row(
